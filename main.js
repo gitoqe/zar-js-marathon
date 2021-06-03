@@ -62,4 +62,4 @@ function createPlayer(player, obj) {
 }
 
 createPlayer("player1", player1)
-createPlayer("player1", player2)
+createPlayer("player2", player2)
