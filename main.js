@@ -5,7 +5,7 @@ let player1 = {
   hp: 100,
   img: "http://reactmarathon-api.herokuapp.com/assets/scorpion.gif",
   weapon: ["knife"],
-  attack() {
+  attack: function () {
     console.log(this.name + " fight");
   },
 };
@@ -15,7 +15,7 @@ let player2 = {
   hp: 100,
   img: "http://reactmarathon-api.herokuapp.com/assets/subzero.gif",
   weapon: ["fist"],
-  attack() {
+  attack: function () {
     console.log(this.name + " fight");
   },
 };
@@ -32,8 +32,8 @@ function createPlayer(player, obj) {
 
   const $tempLife = document.createElement("life");
   $tempLife.classList.add("life");
-  $tempLife.style.width = "100%";
-	$tempLife.innerText = obj["hp"];
+  $tempLife.style.width = `${obj["hp"]}%`;
+  $tempLife.innerText = obj["hp"];
 
   const $tempName = document.createElement("name");
   $tempName.classList.add("name");
@@ -51,5 +51,5 @@ function createPlayer(player, obj) {
   $arenas.appendChild($tempPlayer);
 }
 
-createPlayer("player1", player1)
-createPlayer("player2", player2)
+createPlayer("player1", player1);
+createPlayer("player2", player2);
