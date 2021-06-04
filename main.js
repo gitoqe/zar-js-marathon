@@ -63,7 +63,9 @@ function changeHP(player) {
   player.hp -= 20;
   $playerLife.style.width = `${player["hp"]}%`;
 
-  if (player["hp"] < 0) {
+  if (player["hp"] <= 0) {
+    player.hp = 0;
+    $playerLife.style.width = `${player["hp"]}%`;
     $arenas.appendChild(playerLose(player["name"]));
   }
 }
@@ -75,7 +77,6 @@ function playerLose(name) {
 }
 
 $randomButton.addEventListener("click", function () {
-  console.log("####: click");
   changeHP(player1);
   changeHP(player2);
 });
