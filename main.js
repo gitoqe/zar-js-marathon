@@ -1,14 +1,5 @@
-/*
-## Task #0
+const $arenas = document.querySelector(".arenas");
 
-Создай один два объекта с именем разных игроков, где будут поля 
-
-- name - это строка;
-- hp - это число;
-- img - это строка;
-- weapon - это массив строк (пока можно написать любое оружие, которое вы сможете придумать, не имеет пока значение какое);
-- attack - это функция, внутри которой нужно поместить console.log, который будет выводить сконкатинированную строку имя вашего персонажа + fight (<имя вашего персонажа> + ‘Fight...’);
-*/
 let player1 = {
   name: "SCORPION",
   hp: 100,
@@ -18,6 +9,7 @@ let player1 = {
     console.log(this.name + " fight");
   },
 };
+
 let player2 = {
   name: "SUB-ZERO",
   hp: 100,
@@ -29,36 +21,34 @@ let player2 = {
 };
 
 function createPlayer(player, obj) {
-  let arenas = document.querySelector(".arenas");
+  const $tempPlayer = document.createElement("div");
+  $tempPlayer.classList.add(player);
 
-  let temp_player = document.createElement("div");
-  temp_player.classList.add(player);
+  const $tempProgressBar = document.createElement("div");
+  $tempProgressBar.classList.add("progressbar");
 
-  let temp_progress_bar = document.createElement("div");
-  temp_progress_bar.classList.add("progressbar");
+  const $tempCharacter = document.createElement("character");
+  $tempCharacter.classList.add("character");
 
-  let temp_character = document.createElement("character");
-  temp_character.classList.add("character");
+  const $tempLife = document.createElement("life");
+  $tempLife.classList.add("life");
+  $tempLife.style.width = "100%";
+	$tempLife.innerText = obj["hp"];
 
-  let temp_life = document.createElement("life");
-  temp_life.classList.add("life");
-  temp_life.style.width = "100%";
-	temp_life.innerText = obj["hp"];
+  const $tempName = document.createElement("name");
+  $tempName.classList.add("name");
+  $tempName.innerText = obj["name"];
 
-  let temp_name = document.createElement("name");
-  temp_name.classList.add("name");
-  temp_name.innerText = obj["name"];
+  const $tempImg = document.createElement("img");
+  $tempImg.src = obj["img"];
 
-  let temp_img = document.createElement("img");
-  temp_img.src = obj["img"];
+  $tempProgressBar.appendChild($tempLife);
+  $tempProgressBar.appendChild($tempName);
+  $tempCharacter.appendChild($tempImg);
+  $tempPlayer.appendChild($tempProgressBar);
+  $tempPlayer.appendChild($tempCharacter);
 
-  temp_progress_bar.appendChild(temp_life);
-  temp_progress_bar.appendChild(temp_name);
-  temp_character.appendChild(temp_img);
-  temp_player.appendChild(temp_progress_bar);
-  temp_player.appendChild(temp_character);
-
-  arenas.appendChild(temp_player);
+  $arenas.appendChild($tempPlayer);
 }
 
 createPlayer("player1", player1)
